@@ -67,15 +67,30 @@ export default function Index() {
         setIdAlterando(0);
     }
 
-    async function remover(id) {
-        let r = await api.remover(id);
-        if (r.erro)
-            alert(r.erro);
-        else
-            toast.dark('💕 Aluno removido');
-        listar();
-    }
-
+    function remover(id) {
+        confirmAlert({
+            title: 'Remover Aluno',
+            message: `Tem certeza que deseja remover o aluno ${id} ?`,
+            buttons: [
+              {
+                label: 'Sim',
+                onClick: async() => {
+                    let r = await api.remover(id);
+                    if (r.erro) 
+                        toast.error(`${r.erro}`);
+                    else {
+                        toast.dark('Aluno removido!');
+                        listar();
+                    }
+                }
+              },
+              {
+                label: 'Não'
+              }
+            ]
+        });   
+      }
+      
     async function editar(item) {
         setNome(item.nm_aluno);
         setChamada(item.nr_chamada);

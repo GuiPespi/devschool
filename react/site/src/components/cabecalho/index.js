@@ -6,7 +6,7 @@ export default function Index() {
             <div class="header">
                 <div class="user">
                     <div class="user-image"> 
-                        <img src="assets/eu.jpeg"/> 
+                        <img src="assets/eu.jpeg" alt=""/> 
                         <div class="absolute"> 15 </div> 
                     </div>
 
